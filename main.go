@@ -27,7 +27,8 @@ func main() {
 
 // tester
 func tester(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello %s!", html.EscapeString(
-		r.URL.Query().Get("name")))
+	name := r.URL.Query().Get("name")
+	loc := r.URL.Query().Get("loc")
+	fmt.Fprintf(w, "Hola %s! You seem to be at %s", html.EscapeString(name), html.EscapeString(loc))
 	log.Printf("request received, details follow:\n%+v\n", r)
 }
